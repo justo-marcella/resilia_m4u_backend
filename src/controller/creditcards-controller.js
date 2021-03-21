@@ -1,11 +1,14 @@
-const creditCardsDAO = require('../DAO/creditcards-DAO')
+const creditCardsDAO = require('../DAO/creditcards-DAO');
+const hashGenerator = require('../crypto/hashGenerator');
+
+
 module.exports = (app,bd) =>{
 
     const cDAO = new creditCardsDAO(bd) 
 
 app.post('/creditcards/register', async (req, resp)=>{
   try{
-   const addCreditCard = await cDAO.collectCreditCard([req.body.type, req.body.brand, req.body.block_1, req.body.block_2, req.body.block_3, req.body.holder, req.body.expirationdate, req.body.id_user]);
+   const addCreditCard = await cDAO.collectCreditCard([req.body.type, req.body.brand, req.body.block_1, hashGenerator.hash(), req.body.block_3, req.body.holder, req.body.expirationdate, req.body.id_user]);
 
    resp.send("Credit card successfully saved")
   }

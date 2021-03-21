@@ -1,4 +1,4 @@
-const con = require('../infra/bd-mysql')
+const con = require('../infra/bd-mysql');
 
 module.exports = class creditCardsDAO{
 
