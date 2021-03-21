@@ -11,8 +11,7 @@ const comparePassword = (original, row) => {
             else if (!match) {reject ("Invalid password. Please try again.")}
             else {resolve (row)}
         })
-    }
-    ) 
+    }) 
 }
 
 module.exports = comparePassword
